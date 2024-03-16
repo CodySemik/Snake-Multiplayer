@@ -11,7 +11,7 @@ public class FoodSpawner : NetworkBehaviour
 
     public override void OnStartServer()
     {
-        SpawnFood();
+        SpawnFood(gameObject);
         Food.OnEat += SpawnFood;
     }
     public override void OnStopServer()
@@ -19,7 +19,7 @@ public class FoodSpawner : NetworkBehaviour
         Food.OnEat -= SpawnFood;
     }
     [Server] // Этот атрибут говорит чтобы команда запускалась ТОЛЬКО на сервере
-    public void SpawnFood()
+    public void SpawnFood(GameObject player)
     {
         Vector3 pos = new Vector3(
             Random.Range(-xSize, xSize),

@@ -8,15 +8,13 @@ public class Food : NetworkBehaviour
 {
     [SerializeField] GameObject particlePrefab;
     GameObject boom = null;
-    public static event Action OnEat;
+    public static event Action<GameObject> OnEat;
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
 
-        FindObjectOfType<Snake>().AddTail();
-
         ServerParticles();
-        OnEat?.Invoke();
+        OnEat?.Invoke(other.gameObject);
         NetworkServer.Destroy(gameObject);
     }
     IEnumerator DestroyBoom(float time)

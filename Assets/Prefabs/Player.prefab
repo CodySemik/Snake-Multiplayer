@@ -294,6 +294,7 @@ MonoBehaviour:
   rotationSpeed: 180
   speedChange: 0.5
   tailSpawner: {fileID: 2672751881671963002}
+  playerName: {fileID: 6366353505740221684}
 --- !u!114 &-1286453196775490697
 MonoBehaviour:
   m_ObjectHideFlags: 0

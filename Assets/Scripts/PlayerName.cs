@@ -8,10 +8,12 @@ public class PlayerName : NetworkBehaviour
 {
     [SerializeField] TMPro.TMP_Text playerNameText;
     [SyncVar(hook = nameof(HandlePlayerNameUpdated))] string playerName;
+
+    public string PlayerNameProp { get => playerName; private set => playerName = value; }
+
     public override void OnStartServer()
     {
-        playerName = $"player {connectionToClient.connectionId}";
-
+        PlayerNameProp = $"player {connectionToClient.connectionId}";
     }
     public void HandlePlayerNameUpdated(string oldName, string newName)
     {

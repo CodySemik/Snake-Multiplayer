@@ -18,9 +18,8 @@ public class TailSpawner : NetworkBehaviour
     void AddTail(GameObject player)
     {
         if (player != gameObject) return;
-        GameObject newTail =  Instantiate(tailPrefab, Tails.Count == 0? transform.position : Tails[Tails.Count - 1].transform.position, Quaternion.identity);
+        GameObject newTail =  Instantiate(tailPrefab);
         NetworkServer.Spawn(newTail, connectionToClient);
-        Tails.Add(newTail);
         //speed += speedChange;
     }
 }
